@@ -1,7 +1,7 @@
 {
   "name": "ignite-kebab-case-template-generator",
   "description": "An Ignite Kebab Case Template Generator",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "license": "MIT",
   "author": "Anna Veretennikova <anna@codeparticle.com>",
   "scripts": {

@@ -2,14 +2,14 @@
 
 > It generates templates based on a kebab case file system structure
 
-[![NPM](https://img.shields.io/npm/v/ignite-template-generator.svg)](https://www.npmjs.com/package/ignite-template-generator)
+[![NPM](https://img.shields.io/npm/v/ignite-kebab-case-template-generator.svg)](https://www.npmjs.com/package/ignite-kebab-case-template-generator)
 
-Was created using Ignite CLI (https://github.com/infinitered/ignite/blob/master/docs/advanced-guides/creating-generators.md)
+Was created using [Ignite CLI](https://github.com/infinitered/ignite/blob/master/docs/advanced-guides/creating-generators.md)
 
 ## Install
 
 ```bash
-npm install --save @ignite-kebab-case-template-generator
+npm install --save ignite-kebab-case-template-generator
 ```
 
 ## Usage
