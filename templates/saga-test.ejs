@@ -1,0 +1,40 @@
+/* ***********************************************************
+* Wiring Instructions
+* To make this test work, you'll need to:
+*  - Add a Fixture named get<%= props.name %> to the
+*    ./src/services/fixture-api file. You can just keep adding
+*    functions to that file.
+*************************************************************/
+
+import { call, put } from 'redux-saga/effects';
+import FixtureAPI from 'services/fixture-api';
+import { get<%= props.name %> } from 'sagas/<%= props.fileName %>-sagas';
+import <%= props.name %>Actions from 'rdx/<%= props.fileName %>-redux';
+
+const stepper = fn => mock => fn.next(mock).value;
+
+describe('<%= props.name %> saga tests', () => {
+  it('first calls API', () => {
+    const step = stepper(get<%= props.name %>(FixtureAPI, { data: {} }));
+    // first yield is the API
+    expect(step()).toEqual(call(FixtureAPI.get<%= props.name %>, {}));
+  });
+
+  it('success path', () => {
+    const response = FixtureAPI.get<%= props.name %>({});
+    const step = stepper(get<%= props.name %>(FixtureAPI, { data: {} }));
+    // Step 1: Hit the api
+    step();
+    // Step 2: Successful return and data!
+    expect(step(response)).toEqual(put(<%= pascalCase(props.name) %>Actions.<%= camelCase(props.name) %>Success({})));
+  });
+
+  it('failure path', () => {
+    const response = { ok: false };
+    const step = stepper(get<%= props.name %>(FixtureAPI, { data: {} }));
+    // Step 1: Hit the api
+    step();
+    // Step 2: Failed response.
+    expect(step(response)).toEqual(put(<%= pascalCase(props.name) %>Actions.<%= camelCase(props.name) %>Failure()));
+  });
+});
