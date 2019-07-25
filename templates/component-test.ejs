@@ -1,0 +1,17 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
+import { <%= props.name %> } from 'components/<%= props.fileName %>';
+
+describe('<%= props.name %> component tests', () => {
+  const wrapper = shallow(<<%= props.name %> />);
+
+  test('<%= props.name %> component renders correctly', () => {
+    expect(wrapper.length).toBe(1); // exists
+  });
+
+  test('<%= props.name %> component renders correctly', () => {
+    const tree = renderer.create(wrapper).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});

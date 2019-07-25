@@ -1,0 +1,26 @@
+{
+  "name": "ignite-kebab-case-template-generator",
+  "description": "An Ignite Kebab Case Template Generator",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Anna Veretennikova <anna@codeparticle.com>",
+  "scripts": {
+    "lint": "standard",
+    "format": "prettier --write \"{**/*.ts,**/*.js}\" --loglevel error && standard --fix",
+    "release": "np",
+    "test": "exit 0"
+  },
+  "prettier": {},
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "homepage": "https://github.com/codeparticle/ignite-kebab-case-template-generator",
+  "repository": "https://github.com/codeparticle/ignite-kebab-case-template-generator.git",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "np": "^5.0.1",
+    "prettier": "^1.17.1",
+    "sinon": "^7.3.2",
+    "standard": "^12.0.1"
+  }
+}

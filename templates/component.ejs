@@ -1,0 +1,22 @@
+import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
+import { View, Text } from 'react-native';
+
+// Styles
+import styles from './<%= props.fileName %>-styles';
+
+class <%= props.name %> extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text><%= props.name %> Component</Text>
+      </View>
+    );
+  }
+}
+
+<%= props.name %>.propTypes = {};
+
+<%= props.name %>.defaultProps = {};
+
+export { <%= props.name %> };
