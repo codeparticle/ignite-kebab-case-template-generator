@@ -18,7 +18,10 @@ module.exports = {
 
     const jobs = [
       { template: `redux.ejs`, target: `src/rdx/${fileName}-redux.js` },
-      { template: `redux-test.ejs`, target: `tests/rdx/${fileName}-redux-test.js` }
+      {
+        template: `redux-test.ejs`,
+        target: `tests/rdx/${fileName}-redux-test.js`
+      }
     ]
 
     await ignite.copyBatch(toolbox, jobs, props)

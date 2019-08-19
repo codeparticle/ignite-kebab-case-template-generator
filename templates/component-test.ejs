@@ -6,7 +6,7 @@ import { <%= props.name %> } from 'components/<%= props.fileName %>';
 describe('<%= props.name %> component tests', () => {
   const wrapper = shallow(<<%= props.name %> />);
 
-  test('<%= props.name %> component renders correctly', () => {
+  test('<%= props.name %> component exists', () => {
     expect(wrapper.length).toBe(1); // exists
   });
 

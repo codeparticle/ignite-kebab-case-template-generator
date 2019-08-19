@@ -35,6 +35,7 @@ run `yarn global add ignite-cli` before using generators
 ### Components
 - `ignite g component New` - Will create a New class component and insert it in src/components/new
 - `ignite g component New --func` - Will create a New function component and insert it in src/components/new
+- `ignite g component New --story` or `ignite g component New --func --story` - Will create a New component/function component and a story for it
 
 ### Redux, Sagas
 - `ignite g redux New` - Will generate and link the redux for New in srs/rdx.

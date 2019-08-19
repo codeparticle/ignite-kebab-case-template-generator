@@ -1,10 +1,12 @@
-const patterns = require('../../lib/patterns')
+const helpers = require('../../lib/helpers')
+
+const { insertInFile } = helpers
 
 module.exports = {
   description: 'Generates a component, styles, and an optional test.',
   run: async function (toolbox) {
     // grab some features
-    const { parameters, strings, print, ignite, filesystem } = toolbox
+    const { parameters, strings, print, ignite } = toolbox
     const { pascalCase, kebabCase, isBlank } = strings
 
     const options = parameters.options || {}
@@ -30,7 +32,9 @@ module.exports = {
     }
 
     const fileName = kebabCase(name)
-    const relativePath = pathComponents.length ? pathComponents.join('/') + '/' : ''
+    const relativePath = pathComponents.length
+      ? pathComponents.join('/') + '/'
+      : ''
 
     const props = { name, fileName }
     const jobs = [
@@ -52,21 +56,25 @@ module.exports = {
       }
     ]
 
+    if (options.story) {
+      jobs.push({
+        template: 'component-story.ejs',
+        target: `src/stories/components/${relativePath}${fileName}-story.js`
+      })
+    }
+
     await ignite.copyBatch(toolbox, jobs, props)
 
     const componentsFilePath = `${process.cwd()}/src/components/index.js`
     const exportToAdd = `export { ${name} } from './${fileName}';`
 
-    if (!filesystem.exists(componentsFilePath)) {
-      const msg = `No '${componentsFilePath}' file found.  Can't insert container.`
-      print.error(msg)
-      process.exit(1)
-    }
+    insertInFile(toolbox, componentsFilePath, exportToAdd)
 
-    // insert component export
-    ignite.patchInFile(componentsFilePath, {
-      after: patterns[patterns.constants.PATTERN_EXPORTS],
-      insert: exportToAdd
-    })
+    if (options.story) {
+      const componentStoriesFilePath = `${process.cwd()}/src/stories/components/index.js`
+      const storyImportToAdd = `import './${fileName}-story';`
+
+      insertInFile(toolbox, componentStoriesFilePath, storyImportToAdd)
+    }
   }
 }
