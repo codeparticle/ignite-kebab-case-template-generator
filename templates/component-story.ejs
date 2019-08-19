@@ -1,0 +1,21 @@
+import React from 'react';
+import { View, Text } from 'react-native';
+import { storiesOf } from '@storybook/react-native';
+import { withKnobs } from '@storybook/addon-knobs';
+import { <%= props.name %> } from 'components';
+import styles from 'stories/common-styles';
+
+storiesOf('<%= props.name %>')
+  .addDecorator(withKnobs)
+  .add('Default', () => (
+    <View style={styles.container}>
+        <<%= props.name %> />
+    </View>
+  ))
+  .add('Playground', () => {
+    return (
+      <View style={styles.container}>
+        <<%= props.name %> />
+      </View>
+    );
+  });
