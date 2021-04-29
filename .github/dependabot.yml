@@ -1,0 +1,24 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "13:00"
+  open-pull-requests-limit: 10
+  reviewers:
+  - annaVeretennikova
+  assignees:
+  - annaVeretennikova
+  ignore:
+  - dependency-name: np
+    versions:
+    - 7.2.0
+    - 7.3.0
+    - 7.4.0
+  - dependency-name: sinon
+    versions:
+    - 9.2.4
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
