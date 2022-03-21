@@ -18,7 +18,7 @@
   "repository": "https://github.com/codeparticle/ignite-kebab-case-template-generator.git",
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "np": "^5.0.1",
+    "np": "^7.6.1",
     "prettier": "^2.5.1",
     "sinon": "^13.0.1",
     "standard": "^13.1.0"
